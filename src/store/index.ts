@@ -5,8 +5,6 @@ import EventService from "../services/EventService";
 Vue.use(Vuex);
 
 interface State {
-  user: { id: string; name: string };
-  categories: Array<string>;
   events: Array<{ id: number }>;
   event: { id: number } | undefined;
 }
@@ -14,16 +12,6 @@ interface State {
 export default new Vuex.Store({
   state: (): State => {
     return {
-      user: { id: "abc123", name: "Adam Jahr" },
-      categories: [
-        "sustainability",
-        "nature",
-        "animal welfare",
-        "housing",
-        "education",
-        "food",
-        "community",
-      ],
       events: [],
       event: undefined,
     };

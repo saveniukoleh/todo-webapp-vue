@@ -6,20 +6,17 @@
     <div class="event-card -shadow">
       <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span>
       <h4 class="title">{{ event.title }}</h4>
-      <BaseIcon name="users">{{ event.attendees.length }} attending</BaseIcon>
     </div></router-link
   >
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import BaseIcon from "./BaseIcon.vue";
 
 export default defineComponent({
   props: {
     event: Object,
   },
-  components: { BaseIcon },
 });
 </script>
 

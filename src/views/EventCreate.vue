@@ -2,10 +2,6 @@
   <div>
     <h1>Create an Event</h1>
     <form @submit.prevent="createEvent">
-      <label>Select a category</label>
-      <select v-model="event.category">
-        <option v-for="cat in categories" :key="cat">{{ cat }}</option>
-      </select>
       <h3>Name & describe your event</h3>
       <div class="field">
         <label>Title</label>
@@ -21,15 +17,6 @@
           v-model="event.description"
           type="text"
           placeholder="Add a description"
-        />
-      </div>
-      <h3>Where is your event?</h3>
-      <div class="field">
-        <label>Location</label>
-        <input
-          v-model="event.location"
-          type="text"
-          placeholder="Add a location"
         />
       </div>
       <h3>When is your event?</h3>
@@ -64,7 +51,6 @@ export default defineComponent({
     return {
       event: this.createFreshEvent(),
       times,
-      categories: this.$store.state.categories,
     };
   },
   methods: {
@@ -83,18 +69,13 @@ export default defineComponent({
         });
     },
     createFreshEvent() {
-      const user = this.$store.state.user;
       const id = Math.floor(Math.random() * 10000000);
       return {
         id: id,
-        category: "",
-        organizer: user,
         title: "",
         description: "",
-        location: "",
         date: "",
         time: "",
-        attendees: [],
       };
     },
   },
