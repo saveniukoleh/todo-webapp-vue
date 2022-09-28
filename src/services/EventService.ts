@@ -19,4 +19,10 @@ export default {
   postEvent(event: object) {
     return apiClient.post("/events", event);
   },
+  updateEvent(event: { id: number }) {
+    return apiClient.put("/events/" + event.id, event);
+  },
+  deleteEvent(id: number) {
+    return apiClient.delete("/events/" + id);
+  },
 };

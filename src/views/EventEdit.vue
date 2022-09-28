@@ -35,7 +35,7 @@
               <v-btn
                 :disabled="disableSubmit"
                 color="success"
-                @click="createEvent"
+                @click="updateEvent"
               >
                 Update
               </v-btn>
@@ -54,31 +54,18 @@ import { mapState } from "vuex";
 export default defineComponent({
   props: ["id"],
   methods: {
-    createEvent() {
+    updateEvent() {
       this.event.lastUpdate = new Date().toISOString().split("T")[0];
       this.$store
-        .dispatch("createEvent", this.event)
+        .dispatch("updateEvent", this.event)
         .then(() => {
           this.$router.push({
-            name: "event-show",
-            params: { id: this.event.id },
+            name: "event-list",
           });
-          this.event = this.createFreshEvent();
         })
-        .catch(() => {
-          console.log("There is a problem");
+        .catch((error) => {
+          console.log("There was an error: ", error.message);
         });
-    },
-    createFreshEvent() {
-      const id = Math.floor(Math.random() * 10000000);
-      return {
-        id: id,
-        title: "",
-        description: "",
-        date: "",
-        time: "",
-        lastUpdate: "",
-      };
     },
   },
   computed: {

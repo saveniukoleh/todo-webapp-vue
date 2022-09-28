@@ -63,13 +63,12 @@ export default defineComponent({
         .dispatch("createEvent", this.event)
         .then(() => {
           this.$router.push({
-            name: "event-show",
-            params: { id: this.event.id },
+            name: "event-list",
           });
           this.event = this.createFreshEvent();
         })
-        .catch(() => {
-          console.log("There is a problem");
+        .catch((error) => {
+          console.log("There was an error: ", error.message);
         });
     },
     createFreshEvent() {

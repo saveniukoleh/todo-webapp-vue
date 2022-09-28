@@ -18,7 +18,9 @@
             >Update</v-btn
           >
           <v-spacer></v-spacer>
-          <v-btn class="pa-4" rounded text color="red">Delete</v-btn>
+          <v-btn class="pa-4" rounded text color="red" @click="deleteEvent"
+            >Delete</v-btn
+          >
         </v-card-actions>
       </v-card></v-row
     ></v-container
@@ -33,6 +35,20 @@ export default defineComponent({
   props: ["id"],
   created() {
     this.$store.dispatch("fetchEvent", this.id);
+  },
+  methods: {
+    deleteEvent() {
+      this.$store
+        .dispatch("deleteEvent", this.event)
+        .then(() => {
+          this.$router.push({
+            name: "event-list",
+          });
+        })
+        .catch((error) => {
+          console.log("There was an error: " + error.message);
+        });
+    },
   },
   computed: mapState(["event"]),
 });

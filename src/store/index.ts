@@ -20,6 +20,12 @@ export default new Vuex.Store({
     ADD_EVENT(state, event) {
       state.events.push(event);
     },
+    UPDATE_EVENT(state, event) {
+      state.events.push(event);
+    },
+    DELETE_EVENT(state, event) {
+      state.events.splice(state.events.indexOf(event), 1);
+    },
     SET_EVENTS(state, events) {
       state.events = events;
     },
@@ -28,6 +34,24 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    updateEvent({ commit }, event) {
+      return EventService.updateEvent(event)
+        .then(() => {
+          commit("UPDATE_EVENT", event);
+        })
+        .catch((error) => {
+          console.log("There was an error: " + error.message);
+        });
+    },
+    deleteEvent({ commit }, event) {
+      return EventService.deleteEvent(event.id)
+        .then(() => {
+          commit("DELETE_EVENT", event);
+        })
+        .catch((error) => {
+          console.log("There was an error: " + error.message);
+        });
+    },
     createEvent({ commit }, event) {
       return EventService.postEvent(event).then(() => {
         commit("ADD_EVENT", event);
@@ -39,7 +63,7 @@ export default new Vuex.Store({
           commit("SET_EVENTS", response.data);
         })
         .catch((error) => {
-          console.log("There was an error:" + error.message);
+          console.log("There was an error: " + error.message);
         });
     },
     fetchEvent({ commit, getters }, id) {
@@ -52,7 +76,7 @@ export default new Vuex.Store({
             commit("SET_EVENT", response.data);
           })
           .catch((error) => {
-            console.log("There was an error:" + error.message);
+            console.log("There was an error: " + error.message);
           });
       }
     },
