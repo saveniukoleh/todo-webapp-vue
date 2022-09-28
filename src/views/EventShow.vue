@@ -1,30 +1,26 @@
 <template>
-  <v-container fluid>
-    <v-row justify="center">
-      <v-card max-width="460" min-width="320" class="pa-2">
-        <v-card-title>
-          <h1 class="display-2 font-weight-bold">
-            {{ event.title }}
-          </h1>
-        </v-card-title>
-        <v-card-text>
-          <p class="text-body-1 mb-3">@{{ event.time }} on {{ event.date }}</p>
-          <p class="text-h5 mb-3">Event details</p>
-          <p class="text-body-1 mb-3">{{ event.description }}</p>
-          <p class="text-caption ma-0">Last updated {{ event.lastUpdate }}</p>
-        </v-card-text>
-        <v-card-actions>
-          <v-btn :to="{ name: 'event-edit' }" class="pa-4" rounded text
-            >Update</v-btn
-          >
-          <v-spacer></v-spacer>
-          <v-btn class="pa-4" rounded text color="red" @click="deleteEvent"
-            >Delete</v-btn
-          >
-        </v-card-actions>
-      </v-card></v-row
-    ></v-container
-  >
+  <v-card class="mx-auto" max-width="460" min-width="280">
+    <v-card-title>
+      <h1 class="display-2 font-weight-bold">
+        {{ event.title }}
+      </h1>
+    </v-card-title>
+    <v-card-text>
+      <p class="text-body-1 mb-3">{{ event.time }} on {{ event.date }}</p>
+      <p class="text-h5 mb-3">Event details</p>
+      <p class="text-body-1 mb-3">{{ event.description }}</p>
+      <p class="text-caption ma-0">Last updated {{ event.lastUpdate }}</p>
+    </v-card-text>
+    <v-card-actions>
+      <v-btn :to="{ name: 'event-edit' }" class="pa-4" rounded text
+        >Update</v-btn
+      >
+      <v-spacer></v-spacer>
+      <v-btn class="pa-4" rounded text color="red" @click="deleteEvent"
+        >Delete</v-btn
+      >
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script lang="ts">

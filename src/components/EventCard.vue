@@ -1,22 +1,32 @@
 <template>
-  <router-link
+  <!-- <router-link
     class="event-link"
     :to="{ name: 'event-show', params: { id: event.id } }"
-  >
-    <div class="event-card -shadow">
+  > -->
+  <v-list-item :to="{ name: 'event-show', params: { id: event.id } }">
+    <v-list-item-content>
+      <v-list-item-title
+        class="text-h6 mb-2"
+        v-text="event.title"
+      ></v-list-item-title>
+      <v-list-item-subtitle>
+        {{ event.time + " on " + event.date }}
+      </v-list-item-subtitle>
+      <v-divider class="pa-n3"></v-divider>
+    </v-list-item-content>
+  </v-list-item>
+  <!-- <div class="event-card -shadow">
       <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span>
       <h4 class="title">{{ event.title }}</h4>
-    </div></router-link
-  >
+    </div> -->
+  <!-- </router-link> -->
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  props: {
-    event: Object,
-  },
+  props: ["index", "event"],
 });
 </script>
 
