@@ -1,98 +1,27 @@
 {
   "events": [
     {
-      "id": 1,
+      "id": 6180476,
       "title": "Beach Cleanup",
-      "date": "Aug 28 2018",
-      "time": "10:00",
-      "location": "Daytona Beach",
+      "date": "2022-10-28",
+      "time": "10:35",
       "description": "Let's clean up this beach.",
-      "organizer": "Adam Jahr",
-      "category": "sustainability",
-      "attendees": [
-        {
-          "id": "abc123",
-          "name": "Adam Jahr"
-        },
-        {
-          "id": "def456",
-          "name": "Gregg Pollack"
-        },
-        {
-          "id": "ghi789",
-          "name": "Beth Swanson"
-        },
-        {
-          "id": "jkl101",
-          "name": "Mary Gordon"
-        }
-      ]
+      "lastUpdate": "2022-09-26"
     },
     {
-      "id": 2,
+      "id": 6980476,
       "title": "Park Cleanup",
-      "date": "Nov 12 2018",
-      "time": "12:00",
-      "location": "132 N Magnolia Street, Orlando, Florida",
+      "date": "2022-11-12",
+      "time": "12:45",
       "description": "We're going to clean up this park.",
-      "organizer": "Adam Jahr",
-      "category": "nature",
-      "attendees": [
-        {
-          "id": "ghi789",
-          "name": "Beth Swanson"
-        },
-        {
-          "id": "jkl101",
-          "name": "Mary Gordon"
-        }
-      ]
+      "lastUpdate": "2022-09-27"
     },
     {
-      "id": 3,
+      "id": 1046235,
       "title": "Pet Adoption Day",
-      "date": "Dec 2 2018",
-      "time": "12:00",
-      "location": "132 N Magnolia Street, Orlando, Florida",
+      "date": "2022-12-2",
+      "time": "12:15",
       "description": "Help animals find new homes.",
-      "organizer": "Gregg Pollack",
-      "category": "animal welfare",
-      "attendees": [
-        {
-          "id": "abc123",
-          "name": "Adam Jahr"
-        },
-        {
-          "id": "ghi789",
-          "name": "Beth Swanson"
-        },
-        {
-          "id": "jkl101",
-          "name": "Mary Gordon"
-        }
-      ]
-    },
-    {
-      "id": 5579576,
-      "title": "",
-      "description": "",
-      "date": "2022-09-14T21:22:00.000Z",
-      "time": "3:00"
-    },
-    {
-      "id": 1040235,
-      "title": "Test",
-      "description": "TestD",
-      "date": "2022-09-29",
-      "time": "04:37",
-      "lastUpdate": "2022-09-28"
-    },
-    {
-      "id": 6980176,
-      "title": "sdfg",
-      "description": "sdfg",
-      "date": "2022-09-20",
-      "time": "15:23",
       "lastUpdate": "2022-09-28"
     }
   ]

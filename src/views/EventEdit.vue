@@ -3,7 +3,7 @@
     <v-row justify="center">
       <v-card max-width="460">
         <v-card-title>
-          <h1 class="display-2 font-weight-bold mb-3">Create an Event</h1>
+          <h1 class="display-2 font-weight-bold mb-3">Update an Event</h1>
         </v-card-title>
         <v-card-text>
           <v-form @submit.prevent="createEvent">
@@ -37,7 +37,7 @@
                 color="success"
                 @click="createEvent"
               >
-                Submit
+                Update
               </v-btn>
             </v-card-actions>
           </v-form>
@@ -49,13 +49,10 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapState } from "vuex";
 
 export default defineComponent({
-  data() {
-    return {
-      event: this.createFreshEvent(),
-    };
-  },
+  props: ["id"],
   methods: {
     createEvent() {
       this.event.lastUpdate = new Date().toISOString().split("T")[0];
@@ -94,6 +91,7 @@ export default defineComponent({
       );
       return !allInputsFilled;
     },
+    ...mapState(["event"]),
   },
 });
 </script>

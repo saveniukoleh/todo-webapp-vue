@@ -20,5 +20,3 @@ export default defineComponent({
   computed: mapState(["events"]),
 });
 </script>
-
-<style></style>

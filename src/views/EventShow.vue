@@ -1,12 +1,28 @@
 <template>
-  <div>
-    <div class="event-header">
-      <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span>
-      <h1 class="title">{{ event.title }}</h1>
-    </div>
-    <h2>Event details</h2>
-    <p>{{ event.description }}</p>
-  </div>
+  <v-container fluid>
+    <v-row justify="center">
+      <v-card max-width="460" min-width="320" class="pa-2">
+        <v-card-title>
+          <h1 class="display-2 font-weight-bold">
+            {{ event.title }}
+          </h1>
+        </v-card-title>
+        <v-card-text>
+          <p class="text-body-1 mb-3">@{{ event.time }} on {{ event.date }}</p>
+          <p class="text-h5 mb-3">Event details</p>
+          <p class="text-body-1 mb-3">{{ event.description }}</p>
+          <p class="text-caption ma-0">Last updated {{ event.lastUpdate }}</p>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn :to="{ name: 'event-edit' }" class="pa-4" rounded text
+            >Update</v-btn
+          >
+          <v-spacer></v-spacer>
+          <v-btn class="pa-4" rounded text color="red">Delete</v-btn>
+        </v-card-actions>
+      </v-card></v-row
+    ></v-container
+  >
 </template>
 
 <script lang="ts">
@@ -21,24 +37,3 @@ export default defineComponent({
   computed: mapState(["event"]),
 });
 </script>
-
-<style>
-.location {
-  margin-bottom: 0;
-}
-.location > .icon {
-  margin-left: 10px;
-}
-.event-header > .title {
-  margin: 0;
-}
-.list-group {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.list-group > .list-item {
-  padding: 1em 0;
-  border-bottom: solid 1px #e5e5e5;
-}
-</style>
