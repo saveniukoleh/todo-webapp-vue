@@ -1,48 +1,56 @@
 <template>
-  <div>
-    <h1>Create an Event</h1>
-    <form @submit.prevent="createEvent">
-      <h3>Name & describe your event</h3>
-      <div class="field">
-        <label>Title</label>
-        <input
-          v-model="event.title"
-          type="text"
-          placeholder="Add an event title"
-        />
-      </div>
-      <div class="field">
-        <label>Description</label>
-        <input
-          v-model="event.description"
-          type="text"
-          placeholder="Add a description"
-        />
-      </div>
-      <h3>When is your event?</h3>
-      <div class="field">
-        <label>Date</label>
-        <datepicker v-model="event.date" placeholder="Select a date" />
-      </div>
-      <div class="field">
-        <label>Select a time</label>
-        <select v-model="event.time">
-          <option v-for="time in times" :key="time">{{ time }}</option>
-        </select>
-      </div>
-      <input type="submit" class="button -fill-gradient" value="Submit" />
-    </form>
-  </div>
+  <v-container fill-height fluid>
+    <v-row justify="center">
+      <v-card max-width="460">
+        <v-card-title>
+          <h1 class="display-2 font-weight-bold mb-3">Create an Event</h1>
+        </v-card-title>
+        <v-card-text>
+          <v-form @submit.prevent="createEvent">
+            <v-text-field
+              v-model="event.title"
+              label="Title"
+              required
+            ></v-text-field>
+            <v-text-field
+              v-model="event.description"
+              label="Description"
+              required
+            ></v-text-field>
+            <v-date-picker
+              full-width
+              v-model="event.date"
+              class="mt-4"
+              min="2000-01-01"
+              max="2030-01-01"
+            ></v-date-picker>
+            <v-divider class="mb-3"></v-divider>
+            <v-time-picker
+              full-width
+              ampm-in-title
+              v-model="event.time"
+            ></v-time-picker>
+            <v-divider class="mb-3"></v-divider>
+            <v-card-actions>
+              <v-btn
+                :disabled="disableSubmit"
+                color="success"
+                @click="createEvent"
+              >
+                Submit
+              </v-btn>
+            </v-card-actions>
+          </v-form>
+        </v-card-text>
+      </v-card>
+    </v-row>
+  </v-container>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Datepicker from "vuejs-datepicker";
 
 export default defineComponent({
-  components: {
-    Datepicker,
-  },
   data() {
     const times = [];
     for (let i = 1; i <= 24; i++) {
@@ -55,6 +63,7 @@ export default defineComponent({
   },
   methods: {
     createEvent() {
+      this.event.lastUpdate = new Date().toISOString().split("T")[0];
       this.$store
         .dispatch("createEvent", this.event)
         .then(() => {
@@ -76,7 +85,19 @@ export default defineComponent({
         description: "",
         date: "",
         time: "",
+        lastUpdate: "",
       };
+    },
+  },
+  computed: {
+    disableSubmit() {
+      const allInputsFilled = !!(
+        this.event.title &&
+        this.event.description &&
+        this.event.time &&
+        this.event.date
+      );
+      return !allInputsFilled;
     },
   },
 });
