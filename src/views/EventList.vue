@@ -2,9 +2,19 @@
   <v-card class="mx-auto overflow-hidden" max-width="460" min-width="280">
     <v-list class="pa-0">
       <p class="text-sm-h3 font-weight-bold pa-3 mb-2 mt-2">Events Listing</p>
+      <v-list-item-action>
+        <v-row class="pl-3">
+          <v-btn class="ma-3" @click="orderByCriteria = 'title'" text
+            >Sort by Title</v-btn
+          >
+          <v-btn class="mt-3" @click="orderByCriteria = 'date'" text
+            >Sort by Date</v-btn
+          >
+        </v-row>
+      </v-list-item-action>
       <v-list-item
         class="pa-0 fullwidth"
-        v-for="event in events"
+        v-for="event in orderBy(events, orderByCriteria)"
         :key="event.id"
       >
         <EventCard :event="event"
@@ -17,14 +27,21 @@
 import { defineComponent } from "vue";
 import EventCard from "@/components/EventCard.vue";
 import { mapState } from "vuex";
+import Vue2Filters from "vue2-filters";
 
 export default defineComponent({
   components: {
     EventCard,
   },
+  data() {
+    return {
+      orderByCriteria: "title",
+    };
+  },
   created() {
     this.$store.dispatch("fetchEvents");
   },
   computed: mapState(["events"]),
+  mixins: [Vue2Filters.mixin],
 });
 </script>
