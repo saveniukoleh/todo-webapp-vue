@@ -45,7 +45,7 @@ export default new Vuex.Store({
         });
     },
     deleteEvent({ commit }, event) {
-      return EventService.deleteEvent(event.id)
+      return EventService.deleteEvent(event)
         .then(() => {
           commit("DELETE_EVENT", event);
         })
@@ -60,8 +60,13 @@ export default new Vuex.Store({
     },
     fetchEvents({ commit }) {
       EventService.getEvents()
-        .then((response) => {
-          commit("SET_EVENTS", response.data);
+        .then((querySnapshot) => {
+          commit(
+            "SET_EVENTS",
+            querySnapshot.docs.map((doc) => {
+              return { id: doc.id, ...doc.data() };
+            })
+          );
         })
         .catch((error) => {
           console.log("There was an error: " + error.message);
@@ -72,9 +77,13 @@ export default new Vuex.Store({
       if (event) {
         commit("SET_EVENT", event);
       } else {
-        EventService.getEvent(id)
-          .then((response) => {
-            commit("SET_EVENT", response.data);
+        EventService.getEvents()
+          .then((querySnapshot) => {
+            const events = querySnapshot.docs.map((doc) => {
+              return { id: doc.id, ...doc.data() };
+            });
+            const event = events.find((event) => event.id === id);
+            commit("SET_EVENT", event);
           })
           .catch((error) => {
             console.log("There was an error: " + error.message);
