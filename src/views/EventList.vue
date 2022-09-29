@@ -16,6 +16,7 @@
         <v-list-item
           class="pa-0 fullwidth"
           v-for="event in orderBy(events, orderByCriteria)"
+          :to="{ name: 'event-show', params: { id: event.id } }"
           :key="event.id"
         >
           <EventCard :event="event"
