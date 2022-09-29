@@ -12,13 +12,15 @@
           >
         </v-row>
       </v-list-item-action>
-      <v-list-item
-        class="pa-0 fullwidth"
-        v-for="event in orderBy(events, orderByCriteria)"
-        :key="event.id"
-      >
-        <EventCard :event="event"
-      /></v-list-item>
+      <draggable @start="drag = true" @end="drag = false">
+        <v-list-item
+          class="pa-0 fullwidth"
+          v-for="event in orderBy(events, orderByCriteria)"
+          :key="event.id"
+        >
+          <EventCard :event="event"
+        /></v-list-item>
+      </draggable>
     </v-list>
   </v-card>
 </template>
@@ -28,10 +30,12 @@ import { defineComponent } from "vue";
 import EventCard from "@/components/EventCard.vue";
 import { mapState } from "vuex";
 import Vue2Filters from "vue2-filters";
+import draggable from "vuedraggable";
 
 export default defineComponent({
   components: {
     EventCard,
+    draggable,
   },
   data() {
     return {
