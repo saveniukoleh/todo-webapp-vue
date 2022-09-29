@@ -1,7 +1,7 @@
 <template>
   <v-card class="mx-auto overflow-hidden" max-width="460" min-width="280">
     <v-list class="pa-0">
-      <p class="text-sm-h3 font-weight-bold pa-3 mb-2 mt-2">Events Listing</p>
+      <p class="text-sm-h3 font-weight-bold pa-3 pt-5 ma-0">Events Listing</p>
       <v-list-item-action>
         <v-row class="pl-3">
           <v-btn class="ma-3" @click="orderByCriteria = 'title'" text
