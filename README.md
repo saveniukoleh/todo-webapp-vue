@@ -30,5 +30,17 @@ yarn test:e2e
 yarn lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Build for your platform with Electron
+```
+yarn electron:build
+```
+
+### Build for all platforms with Electron
+```
+yarn electron:build-all
+```
+
+### Cordova
+```
+yarn cordova-*
+```
