@@ -15,12 +15,12 @@ yarn serve
 yarn build
 ```
 
-### Run your unit tests
+### Run unit tests
 ```
 yarn test:unit
 ```
 
-### Run your end-to-end tests
+### Run end-to-end tests
 ```
 yarn test:e2e
 ```
@@ -30,7 +30,7 @@ yarn test:e2e
 yarn lint
 ```
 
-### Build for your platform with Electron
+### Build for current platform with Electron
 ```
 yarn electron:build
 ```
