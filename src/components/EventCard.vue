@@ -14,9 +14,15 @@
 </template>
 
 <script lang="ts">
+import { TodoEvent } from "@/services/EventService";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  props: ["event"],
+  props: {
+    event: {
+      type: Object as () => TodoEvent,
+      required: true,
+    },
+  },
 });
 </script>
