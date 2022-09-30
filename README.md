@@ -1,4 +1,4 @@
-# ToDo WebApp Vue
+# Todo App Vue
 
 ## Project setup
 ```
