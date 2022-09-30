@@ -22,9 +22,5 @@ describe("EventCard", () => {
     expect(wrapperHtml).toContain(event.title);
     expect(wrapperHtml).toContain(event.time);
     expect(wrapperHtml).toContain(event.date);
-
-    // expect(wrapperHtml).not.toContain(event.id);
-    // expect(wrapperHtml).not.toContain(event.description);
-    // expect(wrapperHtml).not.toContain(event.lastUpdate);
   });
 });
